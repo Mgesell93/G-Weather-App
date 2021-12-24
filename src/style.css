@@ -112,9 +112,13 @@ a .temp-value {
   font-weight: 500;
   text-decoration: none;
 }
-a,
+a {
+  color: #ec923d;
+  text-decoration: none;
+}
 a:hover {
   color: #ec923d;
+  text-decoration: underline;
 }
 .temp-value:hover {
   color: #ec923d;
