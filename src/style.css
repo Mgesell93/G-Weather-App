@@ -100,15 +100,23 @@ h6 {
 .temp-value {
   margin-top: 30px;
 }
+.git-hub {
+  font-size: 12px;
+  font-weight: 300;
+}
 
-a {
+a .temp-value {
   color: #ec923d;
   font-family: "Roboto", sans-serif;
   font-size: 15px;
   font-weight: 500;
   text-decoration: none;
 }
+a,
 a:hover {
+  color: #ec923d;
+}
+.temp-value:hover {
   color: #ec923d;
   text-decoration: underline;
   cursor: pointer;
@@ -120,6 +128,7 @@ a:hover {
 #text-report {
   text-transform: capitalize;
 }
+
 /* sunny background: 10-25 deg --> background: linear-gradient(0deg, rgb(254, 255, 165) 0%, rgb(255, 232, 182) 90%); #ec923d;
 hot weather background: 25-50 deg --> background: linear-gradient(0deg, rgb(253, 193, 104) 0%, rgb(251, 128, 128) 90%); #D65662
 <!-- cold weather background: w<10 deg --> background: linear-gradient(89.2deg, rgb(191, 241, 236) 22.3%, rgb(109, 192, 236) 84.1%); #42799F
