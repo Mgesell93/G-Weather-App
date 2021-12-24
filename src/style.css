@@ -1,0 +1,126 @@
+.container {
+  text-align: center;
+  max-width: 400px;
+  font-family: "Roboto", sans-serif;
+}
+.card {
+  background: linear-gradient(
+    0deg,
+    rgb(255, 249, 165) 0%,
+    rgb(252, 223, 162) 90%
+  );
+  color: #ec923d;
+  margin: 0 auto;
+}
+.card-body {
+  margin-top: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 0;
+}
+.form-control {
+  border: none;
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 30px;
+}
+.submit-button {
+  border: none;
+  color: white;
+  background-color: #ec923d;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: all 200ms ease-in-out;
+}
+.submit-button:hover {
+  box-shadow: 4px 4px 10px #ec923d;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Readex Pro", sans-serif;
+}
+h1 {
+  font-size: 30px;
+  font-weight: 400;
+  margin-bottom: 2px;
+  margin-top: 20px;
+}
+.date {
+  font-size: 18px;
+  font-weight: 300;
+}
+.big-weather-icon {
+  font-size: 55px;
+  margin: 20px auto;
+}
+h2 {
+  font-size: 50px;
+  font-weight: 300;
+  margin-bottom: 0;
+}
+.text-report {
+  font-size: 16px;
+  font-weight: 300;
+  margin-top: 60px;
+}
+.weather-details {
+  margin-top: 30px;
+}
+
+h5 {
+  font-size: 15px;
+  font-weight: 600;
+}
+p {
+  font-size: 12px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+hr {
+  margin-top: 35px;
+}
+.weekly-weather {
+  padding-top: 10px;
+}
+.small-weather-icon {
+  font-size: 22px;
+}
+h6 {
+  font-size: 17px;
+  font-weight: 300;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.temp-value {
+  margin-top: 30px;
+}
+
+a {
+  color: #ec923d;
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+}
+a:hover {
+  color: #ec923d;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.col-sm {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+#text-report {
+  text-transform: capitalize;
+}
+/* sunny background: 10-25 deg --> background: linear-gradient(0deg, rgb(254, 255, 165) 0%, rgb(255, 232, 182) 90%); #ec923d;
+hot weather background: 25-50 deg --> background: linear-gradient(0deg, rgb(253, 193, 104) 0%, rgb(251, 128, 128) 90%); #D65662
+<!-- cold weather background: w<10 deg --> background: linear-gradient(89.2deg, rgb(191, 241, 236) 22.3%, rgb(109, 192, 236) 84.1%); #42799F
+<!-- rainy background:  --> background: linear-gradient(180.3deg, rgb(221, 221, 221) 5.5%, rgb(110, 136, 161) 90.2%); #9FAAB8 */
