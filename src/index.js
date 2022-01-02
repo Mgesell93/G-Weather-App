@@ -1,4 +1,25 @@
 function formatDate(date) {
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  let month = months[now.getMonth()];
+  let dateNow = now.getDate();
+  let day = days[now.getDay()];
+  return `${day} ${dateNow} ${month}`;
+}
+function formatHours() {
   let hours = now.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
@@ -7,40 +28,54 @@ function formatDate(date) {
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  let day = days[now.getDay()];
-  return `${day} ${hours}:${minutes}`;
+  return `${hours}:${minutes}`;
 }
+function lastUpdatedTime(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+
+  return `${hours}:${minutes}`;
+}
+
 function showCityWeather(response) {
-  // console.log(response);
-  let cityTemp = Math.round(response.data.main.temp);
+  console.log(response.data);
+  let bigWeatherIcon = document.querySelector("#big-weather-icon");
+  bigWeatherIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  bigWeatherIcon.setAttribute("alt", response.data.weather[0].description);
+  celsiusMainTemp = Math.round(response.data.main.temp);
   let currentTemp = document.querySelector("#current-temp");
-  currentTemp.innerHTML = `${cityTemp}°C`;
+  currentTemp.innerHTML = `${celsiusMainTemp}°C`;
   let cityName = document.querySelector("#current-city");
   cityName.innerHTML = response.data.name;
   let textReport = document.querySelector("#text-report");
   textReport.innerHTML = response.data.weather[0].description;
+  celsiusMaxTemp = Math.round(response.data.main.temp_max);
   let showMaxTemp = document.querySelector("#max-temp");
-  let maxTemp = Math.round(response.data.main.temp_max);
-  showMaxTemp.innerHTML = `${maxTemp}°`;
+  showMaxTemp.innerHTML = `${celsiusMaxTemp}°`;
+  celsiusMinTemp = Math.round(response.data.main.temp_min);
   let showMinTemp = document.querySelector("#min-temp");
-  let minTemp = Math.round(response.data.main.temp_min);
-  showMinTemp.innerHTML = `${minTemp}°`;
-  let wind = Math.round(response.data.wind.speed);
+  showMinTemp.innerHTML = `${celsiusMinTemp}°`;
   let showWind = document.querySelector("#wind");
-  showWind.innerHTML = `${wind}`;
-  let humidity = response.data.main.humidity;
+  showWind.innerHTML = `${Math.round(response.data.wind.speed)}`;
   let showHumidity = document.querySelector("#humidity");
-  showHumidity.innerHTML = `${humidity}`;
-
+  showHumidity.innerHTML = `${response.data.main.humidity}`;
+  celsiusFeelsLike = Math.round(response.data.main.feels_like);
+  let feelsLike = document.querySelector("#feels-like");
+  feelsLike.innerHTML = `${celsiusFeelsLike}˚`;
+  let visibility = document.querySelector("#visibility");
+  visibility.innerHTML = response.data.visibility / 1000;
+  let lastUpdated = document.querySelector("#last-updated");
+  lastUpdated.innerHTML = lastUpdatedTime(response.data.dt * 1000);
 }
 
 function searchCityWeather(event) {
@@ -58,7 +93,10 @@ function searchCityWeather(event) {
 
 let currentDate = document.querySelector("#current-date");
 let now = new Date();
+
 currentDate.innerHTML = formatDate(now);
+let currentHours = document.querySelector("#current-hour");
+currentHours.innerHTML = formatHours(now);
 
 let searchCity = document.querySelector("form");
 searchCity.addEventListener("submit", searchCityWeather);
@@ -79,31 +117,41 @@ function retrievePosition(postion) {
   let apiKey = "7815148929416e89fc149fc11279799e";
   let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather?";
   let apiUrl = `${apiEndpoint}lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
-  console.log(apiUrl);
+
   axios.get(apiUrl).then(showCurrentCityWeather);
 }
 
 function showCurrentCityWeather(response) {
-  console.log(response);
-  let cityTemp = Math.round(response.data.main.temp);
+  let bigWeatherIcon = document.querySelector("#big-weather-icon");
+  bigWeatherIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  bigWeatherIcon.setAttribute("alt", response.data.weather[0].description);
+  celsiusMainTemp = Math.round(response.data.main.temp);
   let currentTemp = document.querySelector("#current-temp");
-  currentTemp.innerHTML = `${cityTemp}°C`;
+  currentTemp.innerHTML = `${celsiusMainTemp}°C`;
   let cityName = document.querySelector("#current-city");
   cityName.innerHTML = response.data.name;
   let textReport = document.querySelector("#text-report");
   textReport.innerHTML = response.data.weather[0].description;
+  celsiusMaxTemp = Math.round(response.data.main.temp_max);
   let showMaxTemp = document.querySelector("#max-temp");
-  let maxTemp = Math.round(response.data.main.temp_max);
-  showMaxTemp.innerHTML = `${maxTemp}°`;
+  showMaxTemp.innerHTML = `${celsiusMaxTemp}°`;
+  celsiusMinTemp = Math.round(response.data.main.temp_min);
   let showMinTemp = document.querySelector("#min-temp");
-  let minTemp = Math.round(response.data.main.temp_min);
-  showMinTemp.innerHTML = `${minTemp}°`;
-  let wind = Math.round(response.data.wind.speed);
+  showMinTemp.innerHTML = `${celsiusMinTemp}°`;
   let showWind = document.querySelector("#wind");
-  showWind.innerHTML = `${wind}`;
-  let humidity = response.data.main.humidity;
+  showWind.innerHTML = `${Math.round(response.data.wind.speed)}`;
   let showHumidity = document.querySelector("#humidity");
-  showHumidity.innerHTML = `${humidity}`;
+  showHumidity.innerHTML = `${response.data.main.humidity}`;
+  celsiusFeelsLike = Math.round(response.data.main.feels_like);
+  let feelsLike = document.querySelector("#feels-like");
+  feelsLike.innerHTML = `${celsiusFeelsLike}˚`;
+  let visibility = document.querySelector("#visibility");
+  visibility.innerHTML = response.data.visibility / 1000;
+  let lastUpdated = document.querySelector("#last-updated");
+  lastUpdated.innerHTML = lastUpdatedTime(response.data.dt * 1000);
 }
 
 let currentCityButton = document.querySelector("#search-current-city");
@@ -113,3 +161,44 @@ function getLocation(event) {
   event.preventDefault;
   navigator.geolocation.getCurrentPosition(retrievePosition);
 }
+function showFahrenheitTemp(event) {
+  event.preventDefault();
+  celsius.classList.remove("active");
+  fahrenheit.classList.add("active");
+  let mainTemp = document.querySelector("#current-temp");
+  let fahrenheitMainTemp = (celsiusMainTemp * 9) / 5 + 32;
+  mainTemp.innerHTML = `${Math.round(fahrenheitMainTemp)}°F`;
+  let feelsLike = document.querySelector("#feels-like");
+  let fahrenheitFeelsLike = (celsiusFeelsLike * 9) / 5 + 32;
+  feelsLike.innerHTML = `${Math.round(fahrenheitFeelsLike)}˚`;
+  let maxTemp = document.querySelector("#max-temp");
+  let fahrenheitMaxTemp = (celsiusMaxTemp * 9) / 5 + 32;
+  maxTemp.innerHTML = `${Math.round(fahrenheitMaxTemp)}˚`;
+  let minTemp = document.querySelector("#min-temp");
+  let fahrenheitMinTemp = (celsiusMinTemp * 9) / 5 + 32;
+  minTemp.innerHTML = `${Math.round(fahrenheitMinTemp)}˚`;
+}
+
+function showCelsiusTemp(event) {
+  event.preventDefault();
+  celsius.classList.add("active");
+  fahrenheit.classList.remove("active");
+  let mainTemp = document.querySelector("#current-temp");
+  mainTemp.innerHTML = `${celsiusMainTemp}°C`;
+  let feelsLike = document.querySelector("#feels-like");
+  feelsLike.innerHTML = `${celsiusFeelsLike}°`;
+  let maxTemp = document.querySelector("#max-temp");
+  maxTemp.innerHTML = `${celsiusMaxTemp}°`;
+  let minTemp = document.querySelector("#min-temp");
+  minTemp.innerHTML = `${celsiusMinTemp}°`;
+}
+
+let celsiusMainTemp = null;
+let celsiusFeelsLike = null;
+let celsiusMaxTemp = null;
+let celsiusMinTemp = null;
+
+let fahrenheit = document.querySelector("#fahrenheit");
+fahrenheit.addEventListener("click", showFahrenheitTemp);
+let celsius = document.querySelector("#celsius");
+celsius.addEventListener("click", showCelsiusTemp);

@@ -23,22 +23,25 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://use.typekit.net/qty3sul.css" />
   </head>
   <body>
     <div class="container">
-      <div class="card" id="background">
-        <div class="card-body">
-          <form id="search-bar">
-            <div class="row g-3">
-              <div class="col-sm-7">
+      <div class="main" id="background">
+        <div class="main-body">
+          <form id="search-bar mb-4">
+            <div class="row g-3 search">
+              <div class="col-12">
                 <input
-                  type="text"
-                  class="form-control"
+                  type="search"
+                  class="form-control search-input w-298"
                   placeholder="City name"
                   id="city-value"
                 />
               </div>
-              <div class="col-sm">
+            </div>
+            <div class="row justify-content-center">
+              <div class="col-3">
                 <input
                   type="submit"
                   class="submit-button"
@@ -46,7 +49,7 @@
                   id="search-city"
                 />
               </div>
-              <div class="col-sm">
+              <div class="col-3">
                 <input
                   type="submit"
                   class="submit-button"
@@ -56,87 +59,184 @@
               </div>
             </div>
           </form>
-
-          <h1 id="current-city">Buenos Aires</h1>
-          <div class="date" id="current-date">Monday 14:29</div>
-          <div class="big-weather-icon">
-            <i class="fas fa-cloud-sun"></i>
+          <div class="overview">
+            <div class="big-weather-icon">
+              <img
+                src="http://openweathermap.org/img/wn/10d@2x.png"
+                alt="Clear"
+                id="big-weather-icon"
+              />
+            </div>
+            <h1 id="current-city">Buenos Aires</h1>
+            <div class="time" id="current-hour">18:00</div>
+            <div class="date" id="current-date">Monday 14:29</div>
           </div>
-          <h2 id="current-temp">15°C</h2>
-          <span class="text-report" id="text-report">Partially cloudy</span>
-          <div class="weather-details">
-            <h5>
-              Max <span id="max-temp">10°</span>| Min
-              <span id="min-temp">2°</span>
-            </h5>
-            <p>Humidity: <span id="humidity">23</span>%</p>
-            <p>Wind: <span id="wind">3</span> km/h</p>
-          </div>
-          <hr />
-          <div class="weekly-weather">
-            <div class="row">
-              <div class="col">
-                <div class="small-weather-icon">
-                  <i class="fas fa-cloud-sun-rain"></i>
-                  <h6>Tue</h6>
-                  <p>10° / 2°</p>
+          <div class="details">
+            <div class="main-info">
+              <div class="row justify-content">
+                <div class="col-2">
+                  <h2><strong id="current-temp">15°C</strong></h2>
+                </div>
+                <div class="col-10">
+                  <p class="text-report" id="text-report">Partially cloudy</p>
                 </div>
               </div>
-              <div class="col">
-                <div class="small-weather-icon">
-                  <i class="fas fa-sun"></i>
-                  <h6>Wed</h6>
-                  <p>10° / 2°</p>
+            </div>
+            <div class="second-info">
+              <div class="row justify-content">
+                <div class="col-6">
+                  <p class="feels-like">
+                    Feels like <span id="feels-like">10˚</span>
+                  </p>
+                </div>
+                <div class="col-6">
+                  <p>
+                    Max <span id="max-temp">10°</span> | Min
+                    <span id="min-temp">2°</span>
+                  </p>
                 </div>
               </div>
-              <div class="col">
-                <div class="small-weather-icon">
-                  <i class="fas fa-cloud-rain"></i>
-                  <h6>Thu</h6>
-                  <p>10° / 2°</p>
+            </div>
+            <div class="third-info">
+              <div class="row justify-content center">
+                <div class="col-4 three-col">
+                  <small>
+                    Humidity
+                    <br />
+                    <span id="humidity"><strong>23</strong></span
+                    >%
+                  </small>
                 </div>
-              </div>
-              <div class="col">
-                <div class="small-weather-icon">
-                  <i class="fas fa-cloud-sun"></i>
-                  <h6>Fri</h6>
-                  <p>10° / 2°</p>
+                <div class="col-4 three-col">
+                  <small>
+                    Wind
+                    <br />
+                    <span id="wind"><strong>3</strong></span> km/h
+                  </small>
                 </div>
-              </div>
-              <div class="col">
-                <div class="small-weather-icon">
-                  <i class="far fa-snowflake"></i>
-                  <h6>Sat</h6>
-                  <p>10° / 2°</p>
+                <div class="col-4 three-col">
+                  <small>
+                    Visibility
+                    <br />
+                    <span id="visibility"><strong>10</strong></span> km
+                  </small>
                 </div>
               </div>
             </div>
           </div>
-          <div class="temp-value">
-            <a href="#" id="celsius">C</a> | <a href="#" id="fahrenheit">F</a>
+          <!--
+          <div class="weekly-weather">
+            <div class="row justify-content ">
+              <div class="col-4 week-left">
+                <p>Tuesday</p>
+              </div>
+              <div class="col-4 week-center">
+                <div class="small-weather-icon">
+                  <i class="fas fa-cloud-sun-rain"></i>
+                </div>
+              </div>
+              <div class="col-4 week-right">
+                <p>10° / 2°</p>
+              </div>
+            </div>
+            <div class="row justify-content ">
+              <div class="col-4 week-left">
+                <p>Wednesday</p>
+              </div>
+              <div class="col-4 week-center">
+                <div class="small-weather-icon">
+                  <i class="fas fa-cloud-sun-rain"></i>
+                </div>
+              </div>
+              <div class="col-4 week-right">
+                <p>10° / 2°</p>
+              </div>
+            </div>
+            <div class="row justify-content ">
+              <div class="col-4 week-left">
+                <p>Thursday</p>
+              </div>
+              <div class="col-4 week-center">
+                <div class="small-weather-icon">
+                  <i class="fas fa-cloud-sun-rain"></i>
+                </div>
+              </div>
+              <div class="col-4 week-right">
+                <p>10° / 2°</p>
+              </div>
+            </div>
+            <div class="row justify-content ">
+              <div class="col-4 week-left">
+                <p>Friday</p>
+              </div>
+              <div class="col-4 week-center">
+                <div class="small-weather-icon">
+                  <i class="fas fa-cloud-sun-rain"></i>
+                </div>
+              </div>
+              <div class="col-4 week-right">
+                <p>10° / 2°</p>
+              </div>
+            </div>
+            <div class="row justify-content ">
+              <div class="col-4 week-left">
+                <p>Saturday</p>
+              </div>
+              <div class="col-4 week-center">
+                <div class="small-weather-icon">
+                  <i class="fas fa-cloud-sun-rain"></i>
+                </div>
+              </div>
+              <div class="col-4 week-right">
+                <p>10° / 2°</p>
+              </div>
+            </div>
           </div>
-          <br />
-          <span class="git-hub">
-            <a
-              href="https://github.com/Mgesell93/G-Weather-App"
-              target="_blank"
-              rel="noreferrer"
-              >My GitHub Repository</a
-            >
-          </span>
+          -->
+          <div class="row justify-content">
+            <div class="col-12 last-updated">
+              <p>
+                <small>
+                  Last updated at
+                  <strong id="last-updated">18:23</strong> hs</small
+                >
+              </p>
+            </div>
+          </div>
+
+          <div class="change-unit">
+            <div class="row justify-content-center">
+              <div class="col-1">
+                <a class="submit-button unit active" id="celsius">C</a>
+              </div>
+              <div class="col-1">
+                <a class="submit-button unit" id="fahrenheit">F</a>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <!-- yellow background: 10-25 deg -->
+        <!-- orange weather background: 25-50 deg -->
+        <!-- lightblue weather background: w<10 deg -->
+        <!-- grey background:  rain -->
+        <!-- sun weather emoji-->
+        <!-- cloudy weather emoji-->
+        <!-- rainy weather emoji-->
+        <!-- snow weather emoji-->
+        <!-- rain&usn weather emoji-->
+        <!-- cold weather emoji-->
       </div>
     </div>
+    <p class="git-hub">
+      Open source code by
+      <a
+        href="https://github.com/Mgesell93/G-Weather-App"
+        target="_blank"
+        rel="noreferrer"
+        >Martina Gesell</a
+      >
+    </p>
     <script src="src/index.js"></script>
-    <!-- yellow background: 10-25 deg -->
-    <!-- orange weather background: 25-50 deg -->
-    <!-- lightblue weather background: w<10 deg -->
-    <!-- grey background:  rain -->
-    <!-- sun weather emoji-->
-    <!-- cloudy weather emoji-->
-    <!-- rainy weather emoji-->
-    <!-- snow weather emoji-->
-    <!-- rain&usn weather emoji-->
-    <!-- cold weather emoji-->
   </body>
 </html>

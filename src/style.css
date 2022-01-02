@@ -1,136 +1,271 @@
+h1 {
+  font-family: tuppence, serif;
+  font-style: normal;
+  font-size: 26px;
+  font-weight: 400;
+  margin-bottom: 2px;
+}
+h2 {
+  font-size: 25px;
+  margin-bottom: 0;
+  text-align: left;
+  padding-left: 15px;
+}
+p {
+  font-size: 13px;
+  font-weight: 300;
+}
+hr {
+  margin-top: 35px;
+}
+#current-temp,
+#feels-like,
+#max-temp,
+#min-temp,
+#humidity,
+#wind,
+#visibility,
+#pressure {
+  font-weight: 600;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
+a .temp-value {
+  color: black;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+}
+.temp-value:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.big-weather-icon {
+  font-size: 55px;
+  padding-top: 16px;
+}
+
 .container {
+  background-color: #fef575;
   text-align: center;
-  max-width: 400px;
-  font-family: "Roboto", sans-serif;
+  max-width: 375px;
+  font-family: "commuters-sans", sans-serif;
+  color: black;
+  font-style: normal;
+  font-weight: 100;
+  border-radius: 10px;
 }
-.card {
-  background: linear-gradient(
-    0deg,
-    rgb(255, 249, 165) 0%,
-    rgb(252, 223, 162) 90%
-  );
-  color: #ec923d;
-  margin: 0 auto;
-}
-.card-body {
-  margin-top: 20px;
+
+.main-body {
+  margin-top: 5px;
   margin-left: 5px;
   margin-right: 5px;
-  margin-bottom: 0;
-}
-.form-control {
-  border: none;
-  font-family: "Roboto", sans-serif;
   margin-bottom: 30px;
+  padding-bottom: 15px;
+}
+.col-3 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.col-6 {
+  padding: 0;
+}
+.col-6 #text-report {
+  padding-top: 23px;
+}
+
+.form-control {
+  border: 1px solid;
+  border-radius: 14px;
+}
+.search {
+  margin: 0 auto;
+  height: 67px;
 }
 .submit-button {
-  border: none;
-  color: white;
-  background-color: #ec923d;
-  padding: 5px 10px;
-  border-radius: 4px;
+  height: 24pt;
+  width: 57pt;
+  font-size: 9pt;
+  border: 1px solid;
+  background-color: white;
+  border-radius: 10px;
   transition: all 200ms ease-in-out;
 }
 .submit-button:hover {
-  box-shadow: 4px 4px 10px #ec923d;
+  color: white;
+  background-color: black;
+  border: none;
+}
+.overview {
+  border: 1px solid;
+  background-color: white;
+  border-radius: 50%;
+  width: 237px;
+  height: 237px;
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 10px;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Readex Pro", sans-serif;
+.main-info {
+  width: 317px;
+  height: 62px;
+  margin: 10px auto;
+  background-color: white;
+  border-radius: 12px;
+  margin-top: 5px;
+  display: inline-block;
+  border: 1px solid black;
 }
-h1 {
-  font-size: 30px;
-  font-weight: 400;
-  margin-bottom: 2px;
-  margin-top: 20px;
+.second-info {
+  width: 317px;
+  height: 41px;
+  margin: 0 auto;
+  margin-top: 5px;
+  background-color: white;
+  border-radius: 12px;
+  border: 1px solid black;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 10px 10px;
+}
+.third-info {
+  width: 317px;
+  margin: 0 auto;
+  margin-top: 10px;
+  border-radius: 12px;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 12px;
+}
+
+.feels-like {
+  text-align: left;
+  padding-left: 15px;
+}
+#max-min {
+  text-align: right;
+  padding-right: 15px;
+}
+
+#text-report {
+  padding-right: 15px;
+  text-transform: capitalize;
+  font-size: 18px;
+  font-weight: 300;
+  text-align: right;
+  padding-top: 19px;
+}
+
+#current-hour {
+  font-size: 33px;
+  padding-top: 5px;
+}
+#current-date {
+  font-size: 9px;
 }
 .date {
   font-size: 18px;
   font-weight: 300;
 }
-.big-weather-icon {
-  font-size: 55px;
-  margin: 20px auto;
-}
-h2 {
-  font-size: 50px;
-  font-weight: 300;
-  margin-bottom: 0;
-}
-.text-report {
-  font-size: 16px;
-  font-weight: 300;
-  margin-top: 60px;
-}
+
 .weather-details {
   margin-top: 30px;
 }
 
-h5 {
-  font-size: 15px;
-  font-weight: 600;
-}
-p {
-  font-size: 12px;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-hr {
-  margin-top: 35px;
-}
-.weekly-weather {
-  padding-top: 10px;
-}
-.small-weather-icon {
-  font-size: 22px;
-}
-h6 {
-  font-size: 17px;
-  font-weight: 300;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  font-weight: 500;
-  line-height: 1.2;
-}
 .temp-value {
   margin-top: 30px;
+}
+
+.card {
+  max-width: 300px;
+  border: none;
+}
+.three-col {
+  width: 70px;
+  height: 55px;
+  background-color: white;
+  padding-top: 7px;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin: 5px 10px;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+.weekly-weather {
+  width: 317px;
+  height: 217px;
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 10px auto;
+  padding-top: 10px;
+}
+
+.week-left {
+  padding-left: 30px;
+  padding-top: 5px;
+  text-align: left;
+}
+
+.week-center {
+  font-size: 20px;
+}
+
+.week-right {
+  padding-right: 15px;
+  padding-top: 5px;
+}
+
+.unit {
+  padding: 2px;
 }
 .git-hub {
   font-size: 12px;
   font-weight: 300;
+  margin: 0px auto;
+  text-align: center;
+}
+.last-updated {
+  width: 317px;
+  height: 41px;
+  margin: 0 auto;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: black;
+  background-color: white;
+  border-radius: 12px;
+  border: 1px solid black;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 10px 10px;
+}
+.row {
+  align-items: center;
+  justify-content: center;
+}
+.col-4 {
+  flex: 20%;
 }
 
-a .temp-value {
-  color: #ec923d;
-  font-family: "Roboto", sans-serif;
-  font-size: 15px;
-  font-weight: 500;
-  text-decoration: none;
+.change-unit .active {
+  background-color: lightgray;
 }
-a {
-  color: #ec923d;
-  text-decoration: none;
-}
-a:hover {
-  color: #ec923d;
-  text-decoration: underline;
-}
-.temp-value:hover {
-  color: #ec923d;
-  text-decoration: underline;
-  cursor: pointer;
-}
-.col-sm {
-  padding-left: 0px;
-  padding-right: 0px;
-}
-#text-report {
-  text-transform: capitalize;
+.change-unit .active:hover {
+  background-color: lightgray;
+  cursor: not-allowed;
+  color: black;
+  border: 1px solid black;
 }
 
 /* sunny background: 10-25 deg --> background: linear-gradient(0deg, rgb(254, 255, 165) 0%, rgb(255, 232, 182) 90%); #ec923d;
