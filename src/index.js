@@ -49,7 +49,7 @@ function showCityWeather(response) {
   let bigWeatherIcon = document.querySelector("#big-weather-icon");
   bigWeatherIcon.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   bigWeatherIcon.setAttribute("alt", response.data.weather[0].description);
   celsiusMainTemp = Math.round(response.data.main.temp);
@@ -125,7 +125,7 @@ function showCurrentCityWeather(response) {
   let bigWeatherIcon = document.querySelector("#big-weather-icon");
   bigWeatherIcon.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   bigWeatherIcon.setAttribute("alt", response.data.weather[0].description);
   celsiusMainTemp = Math.round(response.data.main.temp);
