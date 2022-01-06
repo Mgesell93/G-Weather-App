@@ -101,14 +101,6 @@ currentHours.innerHTML = formatHours(now);
 let searchCity = document.querySelector("form");
 searchCity.addEventListener("submit", searchCityWeather);
 
-//let celsius = document.querySelector("#celsius");
-//celsius.addEventListener("click", searchCityWeatherCelsius);
-
-//let fahrenheit = document.querySelector("#fahrenheit");
-//fahrenheit.addEventListener("click", searchCityWeatherFahrenheit);
-
-//let celsiusTemp = 20;
-
 function retrievePosition(postion) {
   console.log(postion);
   let latitude = postion.coords.latitude;
@@ -192,6 +184,35 @@ function showCelsiusTemp(event) {
   let minTemp = document.querySelector("#min-temp");
   minTemp.innerHTML = `${celsiusMinTemp}°`;
 }
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row g-5">`;
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+              <div class="col-2 day-forecast">
+                <div class="weather-forecast-date">${day}</div>
+                <img
+                  src="https://www.openweathermap.org/img/wn/50d@2x.png"
+                  alt=""
+                  width="42"
+                />
+
+                <div class="weather-forecast-temperatures">
+                  <span class="weather-forecast-temp-max">18°</span>
+                  <span class="weather-forecast-temp-min">12°</span>
+                </div>
+              </div>
+            
+  `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+displayForecast();
 
 let celsiusMainTemp = null;
 let celsiusFeelsLike = null;
