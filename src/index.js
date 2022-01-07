@@ -43,39 +43,49 @@ function lastUpdatedTime(timestamp) {
 
   return `${hours}:${minutes}`;
 }
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "7815148929416e89fc149fc11279799e";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude={part}&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
 
 function showCityWeather(response) {
   console.log(response.data);
   let bigWeatherIcon = document.querySelector("#big-weather-icon");
+  let cityName = document.querySelector("#current-city");
+  let currentTemp = document.querySelector("#current-temp");
+  let feelsLike = document.querySelector("#feels-like");
+  let lastUpdated = document.querySelector("#last-updated");
+  let showHumidity = document.querySelector("#humidity");
+  let showMaxTemp = document.querySelector("#max-temp");
+  let showMinTemp = document.querySelector("#min-temp");
+  let showWind = document.querySelector("#wind");
+  let textReport = document.querySelector("#text-report");
+  let visibility = document.querySelector("#visibility");
+
   bigWeatherIcon.setAttribute(
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   bigWeatherIcon.setAttribute("alt", response.data.weather[0].description);
-  celsiusMainTemp = Math.round(response.data.main.temp);
-  let currentTemp = document.querySelector("#current-temp");
-  currentTemp.innerHTML = `${celsiusMainTemp}°C`;
-  let cityName = document.querySelector("#current-city");
-  cityName.innerHTML = response.data.name;
-  let textReport = document.querySelector("#text-report");
-  textReport.innerHTML = response.data.weather[0].description;
-  celsiusMaxTemp = Math.round(response.data.main.temp_max);
-  let showMaxTemp = document.querySelector("#max-temp");
-  showMaxTemp.innerHTML = `${celsiusMaxTemp}°`;
-  celsiusMinTemp = Math.round(response.data.main.temp_min);
-  let showMinTemp = document.querySelector("#min-temp");
-  showMinTemp.innerHTML = `${celsiusMinTemp}°`;
-  let showWind = document.querySelector("#wind");
-  showWind.innerHTML = `${Math.round(response.data.wind.speed)}`;
-  let showHumidity = document.querySelector("#humidity");
-  showHumidity.innerHTML = `${response.data.main.humidity}`;
   celsiusFeelsLike = Math.round(response.data.main.feels_like);
-  let feelsLike = document.querySelector("#feels-like");
+  celsiusMainTemp = Math.round(response.data.main.temp);
+  celsiusMaxTemp = Math.round(response.data.main.temp_max);
+  celsiusMinTemp = Math.round(response.data.main.temp_min);
+  cityName.innerHTML = response.data.name;
+  currentTemp.innerHTML = `${celsiusMainTemp}°C`;
   feelsLike.innerHTML = `${celsiusFeelsLike}˚`;
-  let visibility = document.querySelector("#visibility");
-  visibility.innerHTML = response.data.visibility / 1000;
-  let lastUpdated = document.querySelector("#last-updated");
   lastUpdated.innerHTML = lastUpdatedTime(response.data.dt * 1000);
+  showHumidity.innerHTML = `${response.data.main.humidity}`;
+  showMaxTemp.innerHTML = `${celsiusMaxTemp}°`;
+  showMinTemp.innerHTML = `${celsiusMinTemp}°`;
+  showWind.innerHTML = `${Math.round(response.data.wind.speed)}`;
+  textReport.innerHTML = response.data.weather[0].description;
+  visibility.innerHTML = response.data.visibility / 1000;
+
+  getForecast(response.data.coord);
 }
 
 function searchCityWeather(event) {
@@ -115,35 +125,38 @@ function retrievePosition(postion) {
 
 function showCurrentCityWeather(response) {
   let bigWeatherIcon = document.querySelector("#big-weather-icon");
+  let cityName = document.querySelector("#current-city");
+  let currentTemp = document.querySelector("#current-temp");
+  let feelsLike = document.querySelector("#feels-like");
+  let lastUpdated = document.querySelector("#last-updated");
+  let showHumidity = document.querySelector("#humidity");
+  let showMaxTemp = document.querySelector("#max-temp");
+  let showMinTemp = document.querySelector("#min-temp");
+  let showWind = document.querySelector("#wind");
+  let textReport = document.querySelector("#text-report");
+  let visibility = document.querySelector("#visibility");
+
   bigWeatherIcon.setAttribute(
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   bigWeatherIcon.setAttribute("alt", response.data.weather[0].description);
-  celsiusMainTemp = Math.round(response.data.main.temp);
-  let currentTemp = document.querySelector("#current-temp");
-  currentTemp.innerHTML = `${celsiusMainTemp}°C`;
-  let cityName = document.querySelector("#current-city");
-  cityName.innerHTML = response.data.name;
-  let textReport = document.querySelector("#text-report");
-  textReport.innerHTML = response.data.weather[0].description;
-  celsiusMaxTemp = Math.round(response.data.main.temp_max);
-  let showMaxTemp = document.querySelector("#max-temp");
-  showMaxTemp.innerHTML = `${celsiusMaxTemp}°`;
-  celsiusMinTemp = Math.round(response.data.main.temp_min);
-  let showMinTemp = document.querySelector("#min-temp");
-  showMinTemp.innerHTML = `${celsiusMinTemp}°`;
-  let showWind = document.querySelector("#wind");
-  showWind.innerHTML = `${Math.round(response.data.wind.speed)}`;
-  let showHumidity = document.querySelector("#humidity");
-  showHumidity.innerHTML = `${response.data.main.humidity}`;
   celsiusFeelsLike = Math.round(response.data.main.feels_like);
-  let feelsLike = document.querySelector("#feels-like");
+  celsiusMainTemp = Math.round(response.data.main.temp);
+  celsiusMaxTemp = Math.round(response.data.main.temp_max);
+  celsiusMinTemp = Math.round(response.data.main.temp_min);
+  cityName.innerHTML = response.data.name;
+  currentTemp.innerHTML = `${celsiusMainTemp}°C`;
   feelsLike.innerHTML = `${celsiusFeelsLike}˚`;
-  let visibility = document.querySelector("#visibility");
-  visibility.innerHTML = response.data.visibility / 1000;
-  let lastUpdated = document.querySelector("#last-updated");
   lastUpdated.innerHTML = lastUpdatedTime(response.data.dt * 1000);
+  showHumidity.innerHTML = `${response.data.main.humidity}`;
+  showMaxTemp.innerHTML = `${celsiusMaxTemp}°`;
+  showMinTemp.innerHTML = `${celsiusMinTemp}°`;
+  showWind.innerHTML = `${Math.round(response.data.wind.speed)}`;
+  textReport.innerHTML = response.data.weather[0].description;
+  visibility.innerHTML = response.data.visibility / 1000;
+
+  getForecast(response.data.coord);
 }
 
 let currentCityButton = document.querySelector("#search-current-city");
@@ -184,35 +197,50 @@ function showCelsiusTemp(event) {
   let minTemp = document.querySelector("#min-temp");
   minTemp.innerHTML = `${celsiusMinTemp}°`;
 }
-function displayForecast() {
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+function displayForecast(response) {
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row g-5">`;
-  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `
               <div class="col-2 day-forecast">
-                <div class="weather-forecast-date">${day}</div>
+                <div class="weather-forecast-date">${formatDay(
+                  forecastDay.dt
+                )}</div>
                 <img
-                  src="https://www.openweathermap.org/img/wn/50d@2x.png"
+                  src="https://www.openweathermap.org/img/wn/${
+                    forecastDay.weather[0].icon
+                  }@2x.png"
                   alt=""
                   width="42"
                 />
 
                 <div class="weather-forecast-temperatures">
-                  <span class="weather-forecast-temp-max">18°</span>
-                  <span class="weather-forecast-temp-min">12°</span>
+                  <span class="weather-forecast-temp-max">${Math.round(
+                    forecastDay.temp.max
+                  )}°</span>
+                  <span class="weather-forecast-temp-min">${Math.round(
+                    forecastDay.temp.min
+                  )}</span>
                 </div>
               </div>
             
   `;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
-
-displayForecast();
 
 let celsiusMainTemp = null;
 let celsiusFeelsLike = null;
