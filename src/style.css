@@ -52,9 +52,11 @@ a .temp-value {
   font-size: 55px;
   padding-top: 16px;
 }
+body {
+  background-color: #fef575;
+}
 
 .container {
-  background-color: #fef575;
   text-align: center;
   max-width: 375px;
   font-family: "commuters-sans", sans-serif;
@@ -62,6 +64,8 @@ a .temp-value {
   font-style: normal;
   font-weight: 100;
   border-radius: 10px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .main-body {
@@ -269,6 +273,7 @@ a .temp-value {
 .weather-forecast-temp-max {
   font-weight: 600;
 }
+
 /* sunny background: 10-25 deg --> background: linear-gradient(0deg, rgb(254, 255, 165) 0%, rgb(255, 232, 182) 90%); #ec923d;
 hot weather background: 25-50 deg --> background: linear-gradient(0deg, rgb(253, 193, 104) 0%, rgb(251, 128, 128) 90%); #D65662
 <!-- cold weather background: w<10 deg --> background: linear-gradient(89.2deg, rgb(191, 241, 236) 22.3%, rgb(109, 192, 236) 84.1%); #42799F
