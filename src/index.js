@@ -71,6 +71,7 @@ function searchCityWeather(event) {
 }
 
 function showCityWeather(response) {
+  console.log(response);
   let bigWeatherIcon = document.querySelector("#big-weather-icon");
   let cityName = document.querySelector("#current-city");
   let currentTemp = document.querySelector("#current-temp");
@@ -81,7 +82,7 @@ function showCityWeather(response) {
   let showMinTemp = document.querySelector("#min-temp");
   let showWind = document.querySelector("#wind");
   let textReport = document.querySelector("#text-report");
-  let visibility = document.querySelector("#visibility");
+  let pressure = document.querySelector("#pressure");
 
   bigWeatherIcon.setAttribute(
     "src",
@@ -97,7 +98,7 @@ function showCityWeather(response) {
   showMinTemp.innerHTML = `${Math.round(response.data.main.temp_min)}°`;
   showWind.innerHTML = `${Math.round(response.data.wind.speed)}`;
   textReport.innerHTML = response.data.weather[0].description;
-  visibility.innerHTML = response.data.visibility / 1000;
+  pressure.innerHTML = response.data.main.pressure;
 
   getForecast(response.data.coord);
 }
@@ -136,7 +137,7 @@ function showCurrentCityWeather(response) {
   let showMinTemp = document.querySelector("#min-temp");
   let showWind = document.querySelector("#wind");
   let textReport = document.querySelector("#text-report");
-  let visibility = document.querySelector("#visibility");
+  let pressure = document.querySelector("#pressure");
 
   bigWeatherIcon.setAttribute(
     "src",
@@ -152,7 +153,7 @@ function showCurrentCityWeather(response) {
   showMinTemp.innerHTML = `${Math.round(response.data.main.temp_min)}°`;
   showWind.innerHTML = `${Math.round(response.data.wind.speed)}`;
   textReport.innerHTML = response.data.weather[0].description;
-  visibility.innerHTML = response.data.visibility / 1000;
+  pressure.innerHTML = response.data.main.pressure;
 
   getForecast(response.data.coord);
 }
