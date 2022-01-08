@@ -18,10 +18,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="src/style.css" />
-    <script
-      src="https://kit.fontawesome.com/b371e65685.js"
-      crossorigin="anonymous"
-    ></script>
+
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="https://use.typekit.net/qty3sul.css" />
   </head>
@@ -65,10 +62,10 @@
                 src="https://openweathermap.org/img/wn/10d@2x.png"
                 alt="Clear"
                 id="big-weather-icon"
+                width="120"
               />
             </div>
             <h1 id="current-city">Buenos Aires</h1>
-            <div class="time" id="current-hour">18:00</div>
             <div class="date" id="current-date">Monday 14:29</div>
           </div>
           <div class="details">
@@ -99,7 +96,7 @@
             </div>
             <div class="third-info">
               <div class="row justify-content center">
-                <div class="col-4 three-col">
+                <div class="col-4 three-col left">
                   <small>
                     Humidity
                     <br />
@@ -114,7 +111,7 @@
                     <span id="wind"><strong>3</strong></span> km/h
                   </small>
                 </div>
-                <div class="col-4 three-col">
+                <div class="col-4 three-col right">
                   <small>
                     Visibility
                     <br />
@@ -205,17 +202,6 @@
               </p>
             </div>
           </div>
-
-          <div class="change-unit">
-            <div class="row justify-content-center">
-              <div class="col-1">
-                <a class="submit-button unit active" id="celsius">C</a>
-              </div>
-              <div class="col-1">
-                <a class="submit-button unit" id="fahrenheit">F</a>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -229,6 +215,5 @@
       >
     </p>
     <script src="src/index.js"></script>
-    
   </body>
 </html>

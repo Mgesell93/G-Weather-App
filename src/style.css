@@ -129,6 +129,12 @@ body {
   display: inline-block;
   border: 1px solid black;
 }
+
+.main-info:hover {
+  background-color: black;
+  color: white;
+}
+
 .second-info {
   width: 317px;
   height: 41px;
@@ -272,6 +278,12 @@ body {
 
 .weather-forecast-temp-max {
   font-weight: 600;
+}
+.left {
+  margin-left: 12px;
+}
+.right {
+  margin-right: 12px;
 }
 
 /* sunny background: 10-25 deg --> background: linear-gradient(0deg, rgb(254, 255, 165) 0%, rgb(255, 232, 182) 90%); #ec923d;
