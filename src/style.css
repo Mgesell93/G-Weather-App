@@ -130,11 +130,6 @@ body {
   border: 1px solid black;
 }
 
-.main-info:hover {
-  background-color: black;
-  color: white;
-}
-
 .second-info {
   width: 317px;
   height: 41px;
